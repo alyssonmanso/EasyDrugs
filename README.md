@@ -8,24 +8,24 @@ by professor Sérgio Mendonça, in the course of Computer Science at UFRPE - UAG
 
 <b>Archictect:</b>
   Alysson Manso<br>
-  Coordenar a equipe
-  Produzir a documentação do sistema
-  Integrar todas as partes do sistema final
+  Coordenar a equipe<br>
+  Produzir a documentação do sistema<br>
+  Integrar todas as partes do sistema final<br>
 
 <b>Analyst:</b>
 Djeymisson Rennan<br>
-  Produzir diagramas UML
-  Código fonte e arquivo de geração da aplicação
+  Produzir diagramas UML<br>
+  Código fonte e arquivo de geração da aplicação<br>
 
 <b>Reviewer:</b> 
 Eberson Santos<br>
-  Garantir que o trabalho está atingindo os requisitos definidos
-  Realizar testes de software
+  Garantir que o trabalho está atingindo os requisitos definidos<br>
+  Realizar testes de software<br>
 
 <b>Database Designer:</b> 
 Alana Tenório<br>
-  Produzir diagrama de entidade-relacionamento
-  Gerar script da criação de tabelas de relacionamentos
-  Dicionário de Dados
+  Produzir diagrama de entidade-relacionamento<br>
+  Gerar script da criação de tabelas de relacionamentos<br>
+  Dicionário de Dados<br>
 
 
