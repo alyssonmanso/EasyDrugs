@@ -4,9 +4,10 @@ The easiest way to manage your drugstore.
 The EasyDrugs is a project developed for the the subject "Análise e Projeto de Sistemas" lectured 
 by professor Sérgio Mendonça, in the course of Computer Science at UFRPE - UAG.
 
-Developers:
+# Developers:
 
-Archictect: Alysson Manso
+<b>Archictect:</b>
+  Alysson Manso
   Coordenar a equipe
   Produzir a documentação do sistema
   Integrar todas as partes do sistema final
