@@ -1,0 +1,95 @@
+CREATE database EASTDRUGS;
+
+CREATE table "FUNCIONARIO" (
+    "CPF"             VARCHAR2(20) NOT NULL,
+    "NOME"            VARCHAR2(100) NOT NULL,
+    "ENDERECO_RUA"    VARCHAR2(100) NOT NULL,
+    "ENDERECO_BAIRRO" VARCHAR2(100) NOT NULL,
+    "ENDERECO_CIDADE" VARCHAR2(100) NOT NULL,
+    "ENDERECO_NUM"    NUMBER NOT NULL,
+    "TELEFONE"        VARCHAR2(20),
+    "EMAIL"           VARCHAR2(50),
+    constraint  "FUNCIONARIO_PK" primary key ("CPF")
+)
+/
+CREATE table "ESTOQUE" (
+    "ID"               NUMBER NOT NULL,
+    "QUANTIDADE_TOTAL" NUMBER NOT NULL,
+    constraint  "ESTOQUE_PK" primary key ("ID")
+)
+/
+
+CREATE trigger "BI_ESTOQUE"  
+  before insert on "ESTOQUE"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "DEMO_ORD_SEQ".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/  
+CREATE table "MEDICAMENTO" (
+    "ID"            NUMBER NOT NULL,
+    "NOME"          VARCHAR2(100) NOT NULL,
+    "DESCRICAO"     VARCHAR2(500),
+    "PRECO_COMPRA"  NUMBER NOT NULL,
+    "PRECO_VENDA"   NUMBER NOT NULL,
+    "QUANT_ESTOQUE" NUMBER NOT NULL,
+    "ID_ESTOQUE"    NUMBER NOT NULL,
+    constraint  "MEDICAMENTO_PK" primary key ("ID")
+)
+/
+
+CREATE trigger "BI_MEDICAMENTO"  
+  before insert on "MEDICAMENTO"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "DEMO_ORD_SEQ".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+
+ALTER TABLE "MEDICAMENTO" ADD CONSTRAINT "MEDICAMENTO_FK" 
+FOREIGN KEY ("ID_ESTOQUE")
+REFERENCES "ESTOQUE" ("ID")
+
+/
+CREATE table "VENDA" (
+    "ID"          NUMBER NOT NULL,
+    "STATUS"      NUMBER NOT NULL,
+    "DATA"        DATE NOT NULL,
+    "COD_CLIENTE" NUMBER NOT NULL,
+    constraint  "VENDA_PK" primary key ("ID")
+)
+/
+
+CREATE trigger "BI_VENDA"  
+  before insert on "VENDA"              
+  for each row 
+begin  
+  if :NEW."ID" is null then
+    select "DEMO_ORD_SEQ".nextval into :NEW."ID" from dual;
+  end if;
+end;
+/   
+CREATE table "MEDICAMENTO_VENDA" (
+    "ID_MEDICAMENTO" NUMBER NOT NULL,
+    "ID_VENDA"       NUMBER NOT NULL,
+    "QUANTIDADE"     NUMBER NOT NULL
+)
+/
+
+alter table "MEDICAMENTO_VENDA" add constraint  "MEDICAMENTO_VENDA_PK" primary key ("ID_MEDICAMENTO","ID_VENDA")
+/
+
+ALTER TABLE "MEDICAMENTO_VENDA" ADD CONSTRAINT "MEDICAMENTO_VENDA_FK" 
+FOREIGN KEY ("ID_MEDICAMENTO")
+REFERENCES "MEDICAMENTO" ("ID")
+
+/
+ALTER TABLE "MEDICAMENTO_VENDA" ADD CONSTRAINT "MEDICAMENTO_VENDA_FK2" 
+FOREIGN KEY ("ID_VENDA")
+REFERENCES "VENDA" ("ID")
+
+/
